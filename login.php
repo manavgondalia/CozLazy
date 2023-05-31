@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($password === $candidate_user['password']) {
             session_start();
             $_SESSION['loggedin'] = true;
-            $_SESSION['email'] = $email;
             $_SESSION['name'] = $name;
             $_SESSION['userID'] = $candidate_user['userID'];
             header("Location: welcome.php");
