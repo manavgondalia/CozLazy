@@ -22,9 +22,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 <body>
     <?php include('components/_navbar.php'); ?>
 
-    
-
-
     <h1 class="text-3xl text-center mb-8 font-poppins font-bold">Welcome
         <p class="inline-block text-[#9376E0]">
             <?php echo $_SESSION['name'] ?>

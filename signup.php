@@ -21,6 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['email'] = $email;
         $_SESSION['name'] = $name;
         $_SESSION['userID'] = mysqli_insert_id($conn);
+
+        $empty = '{"slots":["Free","Free","Free","Free","Free","Free","Free","H","Free","Free"],"location":["Empty","Empty","Empty","Empty","Empty","Empty","Empty","Empty","Empty","Empty"]}';
+        $query = "INSERT into `phpusetimetable` (userID, monday, tuesday, wednesday, thursday, friday) VALUES
+        (?, ?, ?, ?, ?, ?);";
+        $result = $conn->execute_query($query, [$_SESSION['userID'], $empty, $empty, $empty, $empty, $empty]);
+
         header("Location: welcome.php");
     } else {
         echo "Error: " . $query . "<br>" . $conn->error();

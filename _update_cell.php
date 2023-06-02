@@ -24,8 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     $temp[$day] = json_encode($pday);
+    $query = "SELECT * FROM `phpusetimetable` WHERE userid = ?;";
+    $result = $conn->execute_query($query, [$id]);
+
+
     $query = "UPDATE `phpusetimetable` SET $day = ? WHERE userid = ?;";
     $result = $conn->execute_query($query, [$temp[$day], $id]);
+
 
     if ($result) {
         header("Location: welcome.php");
